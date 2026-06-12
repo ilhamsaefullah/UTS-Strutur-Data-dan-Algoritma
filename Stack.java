@@ -1,49 +1,40 @@
 import java.util.Scanner;
+import java.util.Stack;
 
-public class MenuMakanan {
+public class Stack {
+
     public static void main(String[] args) {
+
         Scanner input = new Scanner(System.in);
 
-        // Array menu dan harga
-        String[] makanan = {"Es Teh", "Teh Tawar", "Pop Ice", "Cocacola", "Sprite"};
-        int[] harga = {15000, 20000, 10000, 12500, 25000};
+        Stack<Integer> stack1 = new Stack<>();
+        Stack<Integer> stack2 = new Stack<>();
 
-        System.out.print("Berapa jenis minuman yang dipesan? ");
-        int jumlahPesanan = input.nextInt();
-        input.nextLine(); // membersihkan buffer
+        System.out.print("Jumlah elemen Stack 1 : ");
+        int n1 = input.nextInt();
 
-        String[] pesanan = new String[jumlahPesanan];
-        int[] porsi = new int[jumlahPesanan];
-
-        // Input pesanan
-        for (int i = 0; i < jumlahPesanan; i++) {
-            System.out.print("Masukkan nama minuman ke-" + (i + 1) + " : ");
-            pesanan[i] = input.nextLine();
-
-            System.out.print("Masukkan jumlah porsi : ");
-            porsi[i] = input.nextInt();
-            input.nextLine();
+        System.out.println("Masukkan elemen Stack 1");
+        for(int i = 0; i < n1; i++) {
+            stack1.push(input.nextInt());
         }
 
-        int total = 0;
+        System.out.print("\nJumlah elemen Stack 2 : ");
+        int n2 = input.nextInt();
 
-        System.out.println("\nTotal Harga :");
-
-        // Proses perhitungan
-        for (int i = 0; i < jumlahPesanan; i++) {
-            for (int j = 0; j < makanan.length; j++) {
-                if (pesanan[i].equalsIgnoreCase(makanan[j])) {
-                    int subtotal = harga[j] * porsi[i];
-                    total += subtotal;
-
-                    System.out.println("✓ " + makanan[j] +
-                            " @" + harga[j] +
-                            " * " + porsi[i] +
-                            " = " + subtotal);
-                }
-            }
+        System.out.println("Masukkan elemen Stack 2");
+        for(int i = 0; i < n2; i++) {
+            stack2.push(input.nextInt());
         }
 
-        System.out.println("Total = " + total);
+        System.out.println("\nIsi Stack 1 : " + stack1);
+        System.out.println("Isi Stack 2 : " + stack2);
+
+        if(stack1.equals(stack2)) {
+            System.out.println("\nKedua Stack SAMA");
+        } else {
+            System.out.println("\nKedua Stack BERBEDA");
+        }
+
+        input.close();
     }
 }
